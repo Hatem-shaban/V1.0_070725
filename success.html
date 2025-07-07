@@ -36,6 +36,36 @@
 
                 if (error) throw error;
 
+                // Send welcome email after successful activation
+                try {
+                    const userEmail = localStorage.getItem('userEmail') || data.email;
+                    const userName = localStorage.getItem('userName') || 'Valued Customer';
+                    
+                    if (userEmail) {
+                        statusDiv.innerHTML = 'Sending welcome email...';
+                        
+                        const emailResponse = await fetch('/.netlify/functions/send-welcome-email', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                email: userEmail,
+                                userName: userName
+                            })
+                        });
+
+                        if (emailResponse.ok) {
+                            console.log('Welcome email sent successfully');
+                        } else {
+                            console.error('Welcome email failed:', emailResponse.status);
+                        }
+                    }
+                } catch (emailError) {
+                    console.error('Error sending welcome email:', emailError);
+                    // Don't fail the whole process if email fails
+                }
+
                 statusDiv.innerHTML = 'Subscription activated successfully!';
                 localStorage.setItem('subscriptionActive', 'true');
 

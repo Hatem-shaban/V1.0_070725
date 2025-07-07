@@ -1061,6 +1061,30 @@
                         // Free trial - redirect directly to dashboard
                         closeAuthModal();
                         localStorage.removeItem('isFreeTrial'); // Clean up
+                        
+                        // Send welcome email for free trial users
+                        try {
+                            const emailResponse = await fetch('/.netlify/functions/send-welcome-email', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    email: email,
+                                    userName: userName
+                                })
+                            });
+
+                            if (emailResponse.ok) {
+                                console.log('Welcome email sent successfully to:', email);
+                            } else {
+                                console.error('Welcome email failed:', emailResponse.status);
+                            }
+                        } catch (emailError) {
+                            console.error('Error sending welcome email:', emailError);
+                            // Don't fail the signup process if email fails
+                        }
+                        
                         showNotification('Welcome! Your free trial has started.', 'success');
                         
                         // Small delay for UX, then redirect to dashboard
