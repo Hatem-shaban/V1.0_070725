@@ -35,6 +35,8 @@
         }
     </style>
     <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+    <script src="config.js"></script>
+    <script src="monitoring.js"></script>
     <script type="module">
         import startupStackPromise from './app.js';
         
@@ -57,6 +59,19 @@
 
         // Initialize immediately when script loads
         initializeApp();
+
+        // Register service worker for production caching
+        if ('serviceWorker' in navigator && window.APP_CONFIG?.environment === 'production') {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
 
         // Make startCheckout available globally
         window.startCheckout = async function(event) {

@@ -17,6 +17,8 @@
   },
   "scripts": {
     "dev": "netlify dev",
-    "build": "npm install"
+    "build": "npm install",
+    "production-check": "node production-check.js",
+    "deploy": "npm run production-check && echo 'Ready for deployment!'"
   }
 }
