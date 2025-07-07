@@ -380,7 +380,7 @@
                     <button 
                         onclick="startCheckout(event)"
                         data-checkout-button
-                        data-variant-id="877609"
+                        data-variant-id="880115"
                         disabled
                         class="w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 transition duration-200 font-semibold flex items-center justify-center">
                         <i class="fas fa-credit-card mr-2"></i>Choose Starter
@@ -401,7 +401,7 @@
                     <button 
                         onclick="startCheckout(event)" 
                         data-checkout-button
-                        data-variant-id="877605"
+                        data-variant-id="880114"
                         disabled
                         class="w-full bg-white text-purple-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 flex items-center justify-center">
                         <i class="fas fa-credit-card mr-2"></i>Subscribe Now
@@ -421,7 +421,7 @@
                     <button 
                         onclick="startCheckout(event)"
                         data-checkout-button
-                        data-variant-id="877610"
+                        data-variant-id="880113"
                         disabled
                         class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg hover:opacity-90 transition duration-200 font-semibold flex items-center justify-center">
                         <i class="fas fa-credit-card mr-2"></i>Get Annual Plan
@@ -742,14 +742,12 @@
         CREATE_USER_FAILED: 'Failed to create account. Please try again.',
         INVALID_RESPONSE: 'Invalid server response. Please try again.',
         NAME_REQUIRED: 'Please enter your name to sign up.'
-    };
-    
-    // Ensure createLemonSqueezyCheckout is available globally
-    window.createLemonSqueezyCheckout = async function createLemonSqueezyCheckout(email, userId) {
-        try {
-            const variantId = localStorage.getItem('selectedVariantId') || '877605';
-            
-            const response = await fetch('/.netlify/functions/create-lemonsqueezy-checkout', {
+    };        // Ensure createLemonSqueezyCheckout is available globally
+        window.createLemonSqueezyCheckout = async function createLemonSqueezyCheckout(email, userId) {
+            try {
+                const variantId = localStorage.getItem('selectedVariantId') || '880114';
+                
+                const response = await fetch('/.netlify/functions/create-lemonsqueezy-checkout', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -926,11 +924,11 @@
                         // Ensure we have a variant ID set
                         const currentVariantId = localStorage.getItem('selectedVariantId');
                         if (!currentVariantId) {
-                            localStorage.setItem('selectedVariantId', '877605'); // Default to Pro plan
+                            localStorage.setItem('selectedVariantId', '880114'); // Default to Pro plan
                         }
                         
                         // Use the same inline approach for login flow
-                        const variantId = localStorage.getItem('selectedVariantId') || '877605';
+                        const variantId = localStorage.getItem('selectedVariantId') || '880114';
                         
                         const response = await fetch('/.netlify/functions/create-lemonsqueezy-checkout', {
                             method: 'POST',
@@ -983,7 +981,7 @@
                             localStorage.setItem('userEmail', email);
                             
                             // Create checkout session
-                            const variantId = localStorage.getItem('selectedVariantId') || '877605';
+                            const variantId = localStorage.getItem('selectedVariantId') || '880114';
                             
                             const response = await fetch('/.netlify/functions/create-lemonsqueezy-checkout', {
                                 method: 'POST',
@@ -1112,14 +1110,14 @@
                             // Ensure we have a variant ID set
                             const currentVariantId = localStorage.getItem('selectedVariantId');
                             if (!currentVariantId) {
-                                localStorage.setItem('selectedVariantId', '877605'); // Default to Pro plan
+                                localStorage.setItem('selectedVariantId', '880114'); // Default to Pro plan
                             }
                             
                             // Add small delay to ensure user is created in database
                             await new Promise(resolve => setTimeout(resolve, 1000));
                             
                             // Use inline checkout function that was working
-                            const variantId = localStorage.getItem('selectedVariantId') || '877605';
+                            const variantId = localStorage.getItem('selectedVariantId') || '880114';
                             
                             const response = await fetch('/.netlify/functions/create-lemonsqueezy-checkout', {
                                 method: 'POST',

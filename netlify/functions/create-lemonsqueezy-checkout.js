@@ -80,16 +80,16 @@ exports.handler = async (event, context) => {
             };
         }
 
-        // Determine plan type based on the variant ID
+        // Determine plan type based on the variant ID (LIVE VARIANTS)
         let planType;
         switch(variantId) {
-            case '877610':
+            case '880113':
                 planType = 'annual';
                 break;
-            case '877609':
+            case '880115':
                 planType = 'starter';
                 break;
-            case '877605':
+            case '880114':
                 planType = 'pro';
                 break;
             default:

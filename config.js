@@ -16,11 +16,11 @@ window.APP_CONFIG = {
     debug: window.ENVIRONMENT !== 'production'
 };
 
-// Variant IDs for LemonSqueezy products
+// Variant IDs for LemonSqueezy products (LIVE)
 window.PRODUCT_VARIANTS = {
-    starter: '877609',
-    pro: '877605', 
-    annual: '877610'
+    starter: '880115',
+    pro: '880114', 
+    annual: '880113'
 };
 
 console.log('StartupStack-AI Configuration loaded:', window.APP_CONFIG);

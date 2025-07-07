@@ -55,9 +55,9 @@ CREATE TABLE operation_history (
 
 ### 4. LemonSqueezy Products Setup
 Make sure your LemonSqueezy store has these product variants:
-- Starter Plan: ID `877609`
-- Pro Plan: ID `877605` 
-- Annual Plan: ID `877610`
+- Starter Plan: ID `880115`
+- Pro Plan: ID `880114` 
+- Annual Plan: ID `880113`
 
 ### 5. DNS & Email Configuration
 1. Set up DNS records for your domain

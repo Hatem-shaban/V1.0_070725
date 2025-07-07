@@ -114,9 +114,9 @@ All checks should pass before going live!
 ## 🔧 Configuration
 
 ### Product Variants (LemonSqueezy)
-- Starter Plan: `877609` - $29/month
-- Pro Plan: `877605` - $79/month  
-- Annual Plan: `877610` - $468/year
+- Starter Plan: `880115` - $29/month
+- Pro Plan: `880114` - $79/month  
+- Annual Plan: `880113` - $468/year
 
 ### Email Templates
 - Welcome email for new users
