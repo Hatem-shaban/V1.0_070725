@@ -231,7 +231,7 @@
                     const { error } = await stack.supabase
                         .from('users')
                         .update({ 
-                            subscription_status: userData.plan_type === 'lifetime' ? 'lifetime_active' : 'active',
+                            subscription_status: userData.plan_type === 'annual' ? 'annual_active' : 'active',
                             lemonsqueezy_checkout_id: checkoutId,
                             activated_at: new Date().toISOString()
                         })
