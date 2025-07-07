@@ -22,5 +22,3 @@ window.PRODUCT_VARIANTS = {
     pro: '880114', 
     annual: '880113'
 };
-
-console.log('StartupStack-AI Configuration loaded:', window.APP_CONFIG);

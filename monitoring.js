@@ -35,7 +35,7 @@ class ProductionErrorHandler {
     logError(errorInfo) {
         // Log to console in development
         if (window.APP_CONFIG?.debug) {
-            console.error('Error logged:', errorInfo);
+            // Error logged in debug mode
         }
 
         // Store in memory (could send to monitoring service)
@@ -64,10 +64,9 @@ class ProductionErrorHandler {
     async sendErrorToBackend(errorInfo) {
         try {
             // Could implement error reporting to a service like Sentry
-            // For now, just log critical errors
-            console.error('CRITICAL ERROR:', errorInfo);
+            // For now, handle critical errors silently in production
         } catch (err) {
-            console.error('Failed to send error report:', err);
+            // Failed to send error report - handle silently
         }
     }
 

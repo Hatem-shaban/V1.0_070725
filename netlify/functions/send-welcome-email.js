@@ -33,8 +33,7 @@ exports.handler = async (event, context) => {
         const { email, userName } = JSON.parse(event.body);
 
         if (!email) {
-            // Log critical errors only
-            console.error('No email provided');
+            // No email provided - handle appropriately
             return {
                 statusCode: 400,
                 headers,
@@ -96,11 +95,11 @@ exports.handler = async (event, context) => {
             body: JSON.stringify({ message: 'Welcome email sent successfully' })
         };
     } catch (error) {
-        console.error('Email sending failed:', error);
+        // Email sending failed - handle appropriately
         
-        // Detailed error logging
+        // Check for missing API key
         if (!process.env.RESEND_API_KEY) {
-            console.error('RESEND_API_KEY is missing');
+            // RESEND_API_KEY is missing - configuration issue
         }
 
         return {

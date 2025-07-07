@@ -19,7 +19,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('Caching app shell');
+                // Caching app shell
                 return cache.addAll(urlsToCache);
             })
     );
@@ -43,7 +43,7 @@ self.addEventListener('activate', (event) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
                     if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
+                        // Deleting old cache
                         return caches.delete(cacheName);
                     }
                 })

@@ -104,11 +104,11 @@ exports.handler = async (event, context) => {
                 userPrompt = `Create a financial projection for ${params.business} over the next ${params.timeframe}. ${params.keywordsMore ? 'Additional financial factors to consider: ' + params.keywordsMore : ''} ${params.additionalContext ? 'Additional context: ' + params.additionalContext : ''} Include revenue streams, expenses, and growth assumptions.`;
                 break;
             default:
-                console.error(`Unknown operation type: ${operation}`);
+                // Unknown operation type - handle appropriately
                 throw new Error('Invalid operation type');
         }// Check for API key only when needed (not exposing it in logs)
         if (!process.env.OPENAI_API_KEY) {
-            console.error('OpenAI API key missing from environment variables');
+            // OpenAI API key missing from environment variables
             throw new Error('Server configuration error: API key not available');
         }
         

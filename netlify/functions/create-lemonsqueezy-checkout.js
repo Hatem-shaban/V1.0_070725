@@ -72,7 +72,7 @@ exports.handler = async (event, context) => {
         }
 
         if (userError || !existingUser) {
-            console.error('User verification error after retries:', userError || 'User not found');
+            // User verification error after retries - handle appropriately
             return {
                 statusCode: 404,
                 headers,
@@ -174,7 +174,7 @@ exports.handler = async (event, context) => {
         }
 
         if (updateError) {
-            console.error('Error updating user status after retries:', updateError);
+            // Error updating user status after retries - handle silently
         }
 
         return {
@@ -189,7 +189,7 @@ exports.handler = async (event, context) => {
         };
 
     } catch (error) {
-        console.error('Create LemonSqueezy checkout error:', error);
+        // Create LemonSqueezy checkout error - handle appropriately
         
         // Handle different types of errors
         let errorMessage = error.message;

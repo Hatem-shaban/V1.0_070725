@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
             body: JSON.stringify({ message: 'Trial ending email sent successfully' })
         };
     } catch (error) {
-        console.error('Error sending trial ending email:', error);
+        // Error sending trial ending email - handle appropriately
         return {
             statusCode: error.code || 500,
             headers,

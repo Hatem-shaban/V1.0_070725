@@ -56,13 +56,13 @@
                         });
 
                         if (emailResponse.ok) {
-                            console.log('Welcome email sent successfully');
+                            // Welcome email sent successfully
                         } else {
-                            console.error('Welcome email failed:', emailResponse.status);
+                            // Welcome email failed - handle silently
                         }
                     }
                 } catch (emailError) {
-                    console.error('Error sending welcome email:', emailError);
+                    // Error sending welcome email - handle silently
                     // Don't fail the whole process if email fails
                 }
 
@@ -75,7 +75,7 @@
                 }, 1500);
 
             } catch (error) {
-                console.error('Activation error:', error);
+                // Activation error - handle appropriately
                 statusDiv.innerHTML = `Error: ${error.message}`;
                 
                 // Redirect to homepage with error after 3 seconds
