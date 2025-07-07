@@ -84,7 +84,7 @@ exports.handler = async (event, context) => {
         let planType;
         switch(variantId) {
             case '877610':
-                planType = 'lifetime';
+                planType = 'annual';
                 break;
             case '877609':
                 planType = 'starter';
