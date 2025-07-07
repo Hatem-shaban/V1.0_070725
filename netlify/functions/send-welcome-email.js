@@ -46,11 +46,11 @@ exports.handler = async (event, context) => {
         const msg = {
             to: email,
             from: process.env.SENDGRID_FROM_EMAIL, // Use environment variable for verified sender
-            subject: '🎉 Welcome to StartupStack!',
-            text: `Welcome to StartupStack!`,
+            subject: '🎉 Welcome to StartupStack-AI!',
+            text: `Welcome to StartupStack-AI!`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-                    <h1 style="color: #6366F1; margin-bottom: 24px;">🎉 Welcome to StartupStack!</h1>
+                    <h1 style="color: #6366F1; margin-bottom: 24px;">🎉 Welcome to StartupStack-AI!</h1>
                     
                     <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">Thank you for joining our community of entrepreneurs. Your AI-powered toolkit includes:</p>
                     

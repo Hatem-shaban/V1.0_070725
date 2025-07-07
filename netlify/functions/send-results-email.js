@@ -39,16 +39,16 @@ exports.handler = async (event, context) => {
         const msg = {
             to: email,
             from: process.env.SENDGRID_FROM_EMAIL || 'hatem.shaban@gmail.com',
-            subject: subject || 'Your AI Results from StartupStack',
+            subject: subject || 'Your AI Results from StartupStack-AI',
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #6B46C1;">Your StartupStack AI Results</h2>
-                    <p>Here are the results you generated with StartupStack:</p>
+                    <h2 style="color: #6B46C1;">Your StartupStack-AI Results</h2>
+                    <p>Here are the results you generated with StartupStack-AI:</p>
                     <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #6B46C1;">
                         <pre style="white-space: pre-wrap; font-family: monospace;">${content}</pre>
                     </div>
                     <p style="margin-top: 30px;">
-                        Need more help? Login to your <a href="${process.env.URL || 'https://startupstackai.netlify.app'}" style="color: #6B46C1; text-decoration: none;">StartupStack dashboard</a> for more AI tools.
+                        Need more help? Login to your <a href="${process.env.URL || 'https://startupstackai.netlify.app'}" style="color: #6B46C1; text-decoration: none;">StartupStack-AI dashboard</a> for more AI tools.
                     </p>
                 </div>
             `

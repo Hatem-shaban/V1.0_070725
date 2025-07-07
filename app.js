@@ -220,7 +220,7 @@ class StartupStackAI {
                       // Check for specific server configuration errors
                     if (data.error && data.error.includes('Server configuration error')) {
                         console.error('API configuration issue detected. Please check Netlify environment variables.');
-                        throw new Error('StartupStack is not configured properly. Please contact support.');
+                        throw new Error('StartupStack-AI is not configured properly. Please contact support.');
                     }
                     
                     // For client errors or after max retries, throw the error
@@ -552,7 +552,7 @@ async function initializeStartupStack() {
         window.StartupStack = stack;
         return stack;
     } catch (error) {
-        console.error('Error initializing StartupStack:', error);
+        console.error('Error initializing StartupStack-AI:', error);
         throw error;
     }
 }

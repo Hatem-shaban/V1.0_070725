@@ -31,12 +31,12 @@ exports.handler = async (event, context) => {
         const msg = {
             to: email,
             from: 'hatem.shaban@gmail.com',
-            subject: 'Your StartupStack Trial Ends Soon',
+            subject: 'Your StartupStack-AI Trial Ends Soon',
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #6B46C1;">Your StartupStack Trial is Ending</h2>
+                    <h2 style="color: #6B46C1;">Your StartupStack-AI Trial is Ending</h2>
                     <p>Hi ${userName},</p>
-                    <p>Your StartupStack free trial ends in 3 days. Don't lose access to your AI tools!</p>
+                    <p>Your StartupStack-AI free trial ends in 3 days. Don't lose access to your AI tools!</p>
                     <p>Upgrade now to continue:</p>
                     <ul>
                         <li>All 8 AI-powered tools</li>
