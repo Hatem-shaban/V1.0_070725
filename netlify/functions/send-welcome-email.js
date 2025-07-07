@@ -1,5 +1,6 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const { Resend } = require('resend');
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 exports.handler = async (event, context) => {
     // Removed console.log for production
@@ -43,11 +44,10 @@ exports.handler = async (event, context) => {
 
         // Removed SendGrid configuration logging for production
 
-        const msg = {
-            to: email,
-            from: process.env.SENDGRID_FROM_EMAIL, // Use environment variable for verified sender
+        const { data, error } = await resend.emails.send({
+            from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+            to: [email],
             subject: '🎉 Welcome to StartupStack-AI!',
-            text: `Welcome to StartupStack-AI!`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <h1 style="color: #6366F1; margin-bottom: 24px;">🎉 Welcome to StartupStack-AI!</h1>
@@ -85,27 +85,22 @@ exports.handler = async (event, context) => {
                     </p>
                 </div>
             `
-        };
+        });
 
-        await sgMail.send(msg);
+        if (error) {
+            throw error;
+        }
         return {
             statusCode: 200,
+            headers,
             body: JSON.stringify({ message: 'Welcome email sent successfully' })
-        };    } catch (error) {
+        };
+    } catch (error) {
         console.error('Email sending failed:', error);
         
         // Detailed error logging
-        if (!process.env.SENDGRID_API_KEY) {
-            console.error('SENDGRID_API_KEY is missing');
-        }
-        
-        if (error.response) {
-            // SendGrid error response
-            console.error('SendGrid error response:', {
-                status: error.response.status,
-                body: error.response.body,
-                headers: error.response.headers
-            });
+        if (!process.env.RESEND_API_KEY) {
+            console.error('RESEND_API_KEY is missing');
         }
 
         return {
@@ -113,8 +108,7 @@ exports.handler = async (event, context) => {
             headers,
             body: JSON.stringify({ 
                 error: 'Failed to send welcome email',
-                details: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
-                sendgridError: error.response ? error.response.body : undefined
+                details: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
             })
         };
     }

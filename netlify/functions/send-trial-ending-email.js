@@ -1,5 +1,6 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const { Resend } = require('resend');
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 exports.handler = async (event, context) => {
     // Add CORS headers
@@ -28,9 +29,9 @@ exports.handler = async (event, context) => {
     try {
         const { email, userName = 'Valued Customer' } = JSON.parse(event.body);
 
-        const msg = {
-            to: email,
-            from: 'hatem.shaban@gmail.com',
+        const { data, error } = await resend.emails.send({
+            from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+            to: [email],
             subject: 'Your StartupStack-AI Trial Ends Soon',
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -55,9 +56,11 @@ exports.handler = async (event, context) => {
                     </p>
                 </div>
             `
-        };
+        });
 
-        await sgMail.send(msg);
+        if (error) {
+            throw error;
+        }
 
         return {
             statusCode: 200,
